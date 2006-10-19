@@ -1,0 +1,13 @@
+Package: mipolsat
+Version: 0.1
+Date: 2006-04-26
+Title: Useful functions for handling locally processed satellite data
+Author: Øystein Godøy <o.godoy@met.no>
+Maintainer: Øystein Godøy <o.godoy@met.no>
+Depends: 
+Imports:
+Suggests: 
+Description: Reading and processing of locally processed polar platform
+	satellite data.
+License: GPL version 2 or newer
+URL: http://www.r-project.org, http://www.met.no
