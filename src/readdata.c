@@ -29,7 +29,7 @@ void readAVHRRdata(char **infile, double *mymatrix) {
 	img.image[i] = NULL;
     }
 
-    printf("\nOpen file: %s to read data\n",*infile);
+    printf("\tReading data from:\n\t %s\n",*infile);
 
     /*
      * Open input file.
@@ -43,13 +43,6 @@ void readAVHRRdata(char **infile, double *mymatrix) {
     }
 
     imgsize = img.iw*img.ih;
-    /*
-    printf(" Channels herein: ");
-    for (i=0;i<img.z;i++) {
-	printf(" %d",img.ch[i]);
-    }
-    printf("\n");
-    */
 
     /*
      * Fill R interface with data and unpack data simultaneously...
@@ -74,11 +67,9 @@ void readAVHRRdata(char **infile, double *mymatrix) {
      * Do some cleaning
      */
     if (img.track != NULL) free(img.track);
-    /*
-    for (i=0;img.z;i++) {
+    for (i=0;i<img.z;i++) {
 	if (img.image[i] != NULL) free(img.image[i]);
     }
-    */
 
     return;
 }

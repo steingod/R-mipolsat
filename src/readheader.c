@@ -27,7 +27,7 @@ void readAVHRRheader(char **infile, char **description, char **satellite, char *
 
     img.track = NULL;
 
-    printf("\nOpen file: %s to read metadata\n",*infile);
+    printf("\tReading metadata from:\n\t %s\n",*infile);
 
     /*
      * Open input file.

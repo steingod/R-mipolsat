@@ -2,7 +2,9 @@
 \name{compareAVHRRimages}
 \alias{compareAVHRRimages}
 
-\title{Compares AVHRR images from different processing chains}
+\title{
+    Compares a single AVHRR image processed by different processing chains
+}
 
 \description{
 This function reads the output from \link{readAVHRR} and compares AVHRR
@@ -23,7 +25,9 @@ compareAVHRRimages(x, y, channel=1, map=TRUE, method="N")
 }
 \value{None}
 
-\seealso{\link{readAVHRR}, \link{createAVHRRimage}}
+\seealso{
+    \link{readAVHRR}, \link{createAVHRRimage}, \link{compareAVHRRchains}
+}
 
 \author{
     Øystein Godøy (\email{o.godoy@met.no})
