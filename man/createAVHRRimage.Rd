@@ -10,15 +10,16 @@ on the graphical device used. Some basic channel combination is also
 supported.
 }
 \usage{
-createAVHRRimage(x, channel=1, map=TRUE, method="N")  
+createAVHRRimage(x, channel=1, map=TRUE, method="N", ...)  
 }
 
 \arguments{
     \item{x}{R object (\link{list}) returned by \link{readAVHRR}}
     \item{channel}{channel identification}
     \item{map}{logical telling whether coast lines should be added}
-    \item{merthod}{letter specifying how to combine channels ("D" is
+    \item{method}{letter specifying how to combine channels ("D" is
     difference, "R" is ratio, "N" is none)}
+    \item{...}{options to \link{filled.contour}}
 }
 \value{None}
 

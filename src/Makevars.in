@@ -1,6 +1,39 @@
+#
+# NAME:
+# Makevars.in
+#
+# PURPOSE:
+# R-specific file used instead of Makefile.in
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# Øystein Godøy, METNO/FOU, 06.09.2007 
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: Makevars.in,v 1.2 2007-09-07 17:03:00 steingod Exp $
+#
+#
+
 PKG_CPPFLAGS= -I./ @CPPFLAGS@
 
-PKG_CFLAGS= @CFLAGS@
+PKG_CFLAGS= @CFLAGS@ @DEFS@
 
 PKG_LDFLAGS=@LDFLAGS@
 

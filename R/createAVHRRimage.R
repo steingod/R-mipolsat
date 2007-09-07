@@ -1,4 +1,4 @@
-createAVHRRimage <- function(dataset, channel=1, method="N", map=TRUE) {
+createAVHRRimage <- function(dataset, channel=1, method="N", map=TRUE, ...) {
 
     if (missing(dataset)) {
 	cat("Remember to provide an object from readosisaf.\n")
@@ -43,10 +43,10 @@ createAVHRRimage <- function(dataset, channel=1, method="N", map=TRUE) {
 		asp=aspectratio,
 		plot.axes={axis(1);axis(2);
 		lines(mapdata$eastings,mapdata$northing)},
-		color.palette=topo.colors)
+		color.palette=topo.colors, ...)
     } else {
 	filled.contour(eastings,northings,t[,dataset$header$ysize:1],
-		asp=aspectratio,color.palette=topo.colors)
+		asp=aspectratio,color.palette=topo.colors, ...)
     }
 
     if (method=="D") {

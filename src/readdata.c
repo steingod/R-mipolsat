@@ -13,6 +13,9 @@
  *
  * AUTHOR:
  * Øystein Godøy, METNO/FOU, 27.04.2006 
+ *
+ * CVS_ID:
+ * $Id: readdata.c,v 1.3 2007-09-07 17:03:00 steingod Exp $
  */
 
 #include <readdata.h>
@@ -34,6 +37,7 @@ void readAVHRRdata(char **infile, double *mymatrix) {
     /*
      * Open input file.
      */
+    fm_init_fmio_img(&img);
     if ((status = fm_readdata(*infile, &img)) != FM_OK) {
 	sprintf(what,
 		"Could not access file %s, code [status] returned\n", 
@@ -66,9 +70,16 @@ void readAVHRRdata(char **infile, double *mymatrix) {
     /*
      * Do some cleaning
      */
+    /*
     if (img.track != NULL) free(img.track);
     for (i=0;i<img.z;i++) {
 	if (img.image[i] != NULL) free(img.image[i]);
+    }
+    */
+    if (fm_clear_fmio_img(&img)) {
+	sprintf(what,"Could not free image structure");
+	fmerrmsg(where,what);
+	return;
     }
 
     return;

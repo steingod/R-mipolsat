@@ -1,11 +1,45 @@
+#
+# NAME:
+# NA
+#
+# PURPOSE:
+# NA
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# Øystein Godøy, METNO/FOU
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: compareAVHRRchains.R,v 1.2 2007-09-07 17:02:59 steingod Exp $
+#
+#
+
 compareAVHRRchains <- function(chain1, chain2, area="ns") {
 
     if (missing(chain1) || missing (chain2)) {
 	return("Remember to provide paths to chains\n")
     }
 
-    filelist1 <- list.files(chain1,pattern=paste(area,"(\.aha)$",sep=""))
-    filelist2 <- list.files(chain2,pattern=paste(area,"(\.aha)$",sep=""))
+    mypattern <- glob2rx(paste("*",area,".aha$",sep=""))
+    filelist1 <- list.files(chain1,pattern=mypattern)
+    filelist2 <- list.files(chain2,pattern=mypattern)
 
     tmp_f1 <- substr(filelist1,start=0,stop=26)
     tmp_f2 <- substr(filelist2,start=0,stop=26)
@@ -14,6 +48,11 @@ compareAVHRRchains <- function(chain1, chain2, area="ns") {
 
     fl1 <- filelist1[!is.na(mymatches)]
     fl2 <- filelist2[mymatches[!is.na(mymatches)]]
+
+    if (length(fl1)==0)
+	return("No files to process for chain1")
+    if (length(fl1)==0)
+	return("No files to process for chain2")
 
     if (length(fl1) != length(fl2)) 
 	return("Different length of filelists")

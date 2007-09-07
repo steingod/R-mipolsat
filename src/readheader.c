@@ -14,6 +14,9 @@
  *
  * AUTHOR:
  * Øystein Godøy, METNO/FOU, 27.04.2006 
+ *
+ * CVS_ID:
+ * $Id: readheader.c,v 1.3 2007-09-07 17:03:00 steingod Exp $
  */
 
 #include <readdata.h>
@@ -32,6 +35,7 @@ void readAVHRRheader(char **infile, char **description, char **satellite, char *
     /*
      * Open input file.
      */
+    fm_init_fmio_img(&img);
     if ((status = fm_readheader(*infile, &img)) != FM_OK) {
 	sprintf(what,
 		"Could not access file %s, code [status] returned\n", 
@@ -68,7 +72,12 @@ void readAVHRRheader(char **infile, char **description, char **satellite, char *
     /*
      * Do some cleaning
      */
-    if (img.track != NULL) free(img.track);
+    /*if (img.track != NULL) free(img.track);*/
+    if (fm_clear_fmio_img(&img)) {
+	sprintf(what,"Could not free image structure");
+	fmerrmsg(where,what);
+	return;
+    }
 
     return;
 }

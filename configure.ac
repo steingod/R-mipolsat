@@ -1,8 +1,40 @@
-dnl Process this file with autoconf to produce a configure script
+#
+# NAME:
+# configure.ac
+#
+# PURPOSE:
+# Process this file with autoconf to produce a configure script
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# o Handling of missing HDF5 library is yet not perfectly implemented.
+# o PPS library has to be included, even if only reading data, need to
+# split hdfaccess.c/.h in several files.
+#
+# AUTHOR:
+# Øystein Godøy, METNO/FOU, 06.09.2007 
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: configure.ac,v 1.2 2007-09-07 17:02:59 steingod Exp $
+#
 
 AC_PREREQ(2.59)
 
-AC_INIT([mipolsat R-package],[0.1],[o.godoy@met.no])
+AC_INIT([mipolsat R-package],[0.2],[o.godoy@met.no])
 
 AC_LANG(C)
 
@@ -26,18 +58,20 @@ case $with_$1 in
       addincdir="`echo $with_$1 | cut -f1 -d,`"
       addlibdir="`echo $with_$1 | cut -f2 -d,`"
       CPPFLAGS="$CPPFLAGS -I$addincdir"
-      LIBS="$LIBS -L$addlibdir"
+      LIBS=" -L$addlibdir $LIBS"
       ;;
     *)
       addincdir="$with_$1/include"
       addlibdir="$with_$1/lib"
       CPPFLAGS="$CPPFLAGS -I$addincdir"
-      LIBS="$LIBS -L$addlibdir"
+      LIBS="-L$addlibdir $LIBS"
       ;;
 esac
 if test [ $with_$1 != no]; then
     AC_CHECK_LIB([$1],[$2],
     	,[CPPFLAGS="$saved_CPPFLAGS";LIBS="$saved_LIBS";
+	AC_MSG_RESULT([]);
+	AC_MSG_RESULT([]);
 	AC_MSG_ERROR([Did not find lib$1])])
 fi
 ])
@@ -62,26 +96,67 @@ case $with_$1 in
       addincdir="`echo $with_$1 | cut -f1 -d,`"
       addlibdir="`echo $with_$1 | cut -f2 -d,`"
       CPPFLAGS="$CPPFLAGS -I$addincdir"
-      LIBS="$LIBS -L$addlibdir"
+      LIBS="-L$addlibdir $LIBS"
       ;;
     *)
       addincdir="$with_$1/include"
       addlibdir="$with_$1/lib"
       CPPFLAGS="$CPPFLAGS -I$addincdir"
-      LIBS="$LIBS -L$addlibdir"
+      LIBS="-L$addlibdir $LIBS"
       ;;
 esac
 if test [ $with_$1 != no]; then
     AC_CHECK_LIB([$1],[$2],
     	,[CPPFLAGS="$saved_CPPFLAGS";LIBS="$saved_LIBS";
-	AC_MSG_WARN([Did not find lib$1, building library with lib$1 dependent functions disabled])])
+	AC_MSG_WARN([===================================]);
+	AC_MSG_WARN([Did not find lib$1]);
+	AC_MSG_WARN([Disabling lib$1 dependent functions]);
+	AC_MSG_WARN([===================================]);
+	disabled_$1=yes;
+	AC_MSG_RESULT([disabled_$1 has the value $disabled_$1])])
 fi
 ])
 
-FM_REQLIB([fmutil],[fmivec])
-FM_REQLIB([fmio],[fm_readheader])
+AC_DEFUN([FM_ADDINC],[
+# Add path to include files
+saved_CPPFLAGS="$CPPFLAGS"
+saved_LIBS="$LIBS"
+AC_ARG_WITH([$1],
+    AC_HELP_STRING([--with-$1=DIR],
+	[the location of include files that are required as DIR]),
+	,
+	[with_$1=yes])
+    addincdir="$with_$1"
+    if ! test -x $addincdir; then
+	AC_MSG_ERROR([Cannot find directory $addincdir])
+    else
+	CPPFLAGS="$CPPFLAGS -I$addincdir"
+    fi
+])
+
 FM_USELIB([tiff],[TIFFOpen])
+
 FM_USELIB([hdf5],[H5Fopen])
+
+FM_REQLIB([fmutil],[fmivec])
+
+FM_REQLIB([fmio],[fm_readheader])
+AC_MSG_RESULT([disable_hdf5 has the value x$disabled_hdf5])
+if test x$disabled_hdf5 = xyes; then
+    AC_MSG_WARN([===================================]);
+    AC_MSG_WARN([No HDF5 functionality will be available in libfmio])
+    AC_MSG_WARN([===================================]);
+fi
+
+if test [ x$disabled_hdf5 = xyes ]; then
+    AC_MSG_WARN([===================================]);
+    AC_MSG_WARN([Since libhdf5 is disabled,libfmcol will also be disabled])
+    AC_MSG_WARN([===================================]);
+else
+    FM_ADDINC([hlhdf])
+    FM_ADDINC([smhi_saf])
+    FM_REQLIB([fmcol],[read123])
+fi
 
 dnl ########################################################### 
 dnl Some R specific tasks...

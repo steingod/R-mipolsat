@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <fmutil.h>
 #include <fmio.h>
 
 void readAVHRRheader(char **infile, char **description, char **satellite,
