@@ -1,4 +1,38 @@
-createAVHRRimage <- function(dataset, channel=1, method="N", map=TRUE, ...) {
+#
+# NAME:
+# createAVHRRimage
+#
+# PURPOSE:
+# To create an image on the graphical device provided and overlay map.
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# Øystein Godøy, METNO/FOU
+#
+# MODIFIED:
+# Øystein Godøy, METNO/FOU, 10.09.2007: Added palette dependency on
+# channel selection.
+#
+# CVS_ID:
+# $Id: createAVHRRimage.R,v 1.3 2007-09-10 09:48:34 steingod Exp $
+#
+#
+createAVHRRimage <- function(dataset, channel=1, method="N", 
+	colorspace=c("black","white"), colorbias=1, map=TRUE, ...) {
 
     if (missing(dataset)) {
 	cat("Remember to provide an object from readosisaf.\n")
@@ -33,7 +67,7 @@ createAVHRRimage <- function(dataset, channel=1, method="N", map=TRUE, ...) {
     aspectratio <- dataset$header$ysize/dataset$header$xsize
     par(fin=c(5,5*aspectratio))
 
-    ##image(eastings,northings,t[,dataset$header$ysize:1])
+    mypalette <- colorRampPalette(colors=colorspace,bias=colorbias)
 
     if (map==TRUE) {
 	data(gshhsmapdata)
@@ -43,10 +77,10 @@ createAVHRRimage <- function(dataset, channel=1, method="N", map=TRUE, ...) {
 		asp=aspectratio,
 		plot.axes={axis(1);axis(2);
 		lines(mapdata$eastings,mapdata$northing)},
-		color.palette=topo.colors, ...)
+		color.palette=mypalette, ...)
     } else {
 	filled.contour(eastings,northings,t[,dataset$header$ysize:1],
-		asp=aspectratio,color.palette=topo.colors, ...)
+		asp=aspectratio,color.palette=mypalette, ...)
     }
 
     if (method=="D") {

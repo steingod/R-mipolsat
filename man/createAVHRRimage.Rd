@@ -19,6 +19,10 @@ createAVHRRimage(x, channel=1, map=TRUE, method="N", ...)
     \item{map}{logical telling whether coast lines should be added}
     \item{method}{letter specifying how to combine channels ("D" is
     difference, "R" is ratio, "N" is none)}
+    \item{colorspace}{vector of the type c("blue","yello", "red") that is
+    interpolated to a palette. Use colors() to check which colornames that
+    are defined, \link{colorRampPalette} is used to create the palette}
+    \item{colorbias}{check \link{colorRamp} for details}
     \item{...}{options to \link{filled.contour}}
 }
 \value{None}

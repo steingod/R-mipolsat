@@ -15,7 +15,7 @@
  * Øystein Godøy, METNO/FOU, 27.04.2006 
  *
  * CVS_ID:
- * $Id: readdata.c,v 1.3 2007-09-07 17:03:00 steingod Exp $
+ * $Id: readdata.c,v 1.4 2007-09-10 09:48:35 steingod Exp $
  */
 
 #include <readdata.h>
@@ -26,11 +26,6 @@ void readAVHRRdata(char **infile, double *mymatrix) {
     char what[250];
     int i, j, k, l, imgsize, status;
     fmio_img img;
-
-    img.track = NULL;
-    for (i=0;img.z;i++) {
-	img.image[i] = NULL;
-    }
 
     printf("\tReading data from:\n\t %s\n",*infile);
 
@@ -76,11 +71,7 @@ void readAVHRRdata(char **infile, double *mymatrix) {
 	if (img.image[i] != NULL) free(img.image[i]);
     }
     */
-    if (fm_clear_fmio_img(&img)) {
-	sprintf(what,"Could not free image structure");
-	fmerrmsg(where,what);
-	return;
-    }
+    fm_clear_fmio_img(&img);
 
     return;
 }

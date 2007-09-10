@@ -1,3 +1,36 @@
+#
+# NAME:
+# readAVHRR
+#
+# PURPOSE:
+# To read AVHRR imagery stored in standard AVHRR files at the Norwegian
+# Meteorological Institute.
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# Øystein Godøy, METNO/FOU
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: readAVHRR.R,v 1.2 2007-09-10 09:48:34 steingod Exp $
+#
+#
 readAVHRR <- function(filename,nomiss=TRUE) {
 
     if (missing(filename)) {

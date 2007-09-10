@@ -16,7 +16,7 @@
  * Øystein Godøy, METNO/FOU, 27.04.2006 
  *
  * CVS_ID:
- * $Id: readheader.c,v 1.3 2007-09-07 17:03:00 steingod Exp $
+ * $Id: readheader.c,v 1.4 2007-09-10 09:48:35 steingod Exp $
  */
 
 #include <readdata.h>
@@ -28,7 +28,9 @@ void readAVHRRheader(char **infile, char **description, char **satellite, char *
     int status, i;
     fmio_img img;
 
+    /*
     img.track = NULL;
+    */
 
     printf("\tReading metadata from:\n\t %s\n",*infile);
 
@@ -73,11 +75,7 @@ void readAVHRRheader(char **infile, char **description, char **satellite, char *
      * Do some cleaning
      */
     /*if (img.track != NULL) free(img.track);*/
-    if (fm_clear_fmio_img(&img)) {
-	sprintf(what,"Could not free image structure");
-	fmerrmsg(where,what);
-	return;
-    }
+    fm_clear_fmio_img(&img);
 
     return;
 }
