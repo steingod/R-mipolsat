@@ -27,7 +27,7 @@
  * NA
  *
  * CVS_ID:
- * $Id: readdlidev.h,v 1.2 2007-09-12 13:36:55 steingod Exp $
+ * $Id: readdlidev.h,v 1.3 2007-09-12 14:39:26 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -41,7 +41,7 @@
  */
 #include <fmutil.h>
 #include <fmcol.h>
-#include <hdfaccess.h>
+#include <fmcolaccess.h>
 /*
 #include <avhrr_stdat.h>
 #include <nwp_stdat.h>
