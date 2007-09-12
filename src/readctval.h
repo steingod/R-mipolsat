@@ -27,7 +27,7 @@
  * NA
  *
  * CVS_ID:
- * $Id: readctval.h,v 1.1 2007-09-07 17:03:00 steingod Exp $
+ * $Id: readctval.h,v 1.2 2007-09-12 13:36:55 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -41,17 +41,19 @@
  */
 #include <fmutil.h>
 #include <fmcol.h>
+#include <hdfaccess.h>
+#include <hdf5.h>
+/*
 #include <avhrr_stdat.h>
 #include <nwp_stdat.h>
 #include <std_stdat.h>
-#include <hdf5.h>
-/*
 #include <mifield.h>
-*/
 #include <pps_cloudproducts_io.h>
-#include <hdfaccess.h>
+*/
+/*
 #include <safcm_stdat.h>
 #include <safssi_stdat.h>
+*/
 
 #endif /* _COLDUMP_H */
 

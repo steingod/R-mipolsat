@@ -810,10 +810,6 @@ Optional Packages:
                           library either as DIR or INC,LIB
   --with-fmio=DIR         the location of mandatory libfmio files and library
                           either as DIR or INC,LIB
-  --with-hlhdf=DIR        the location of include files that are required as
-                          DIR
-  --with-smhi_saf=DIR     the location of include files that are required as
-                          DIR
   --with-fmcol=DIR        the location of mandatory libfmcol files and library
                           either as DIR or INC,LIB
 
@@ -2588,6 +2584,15 @@ fi
 fi
 
 
+##AC_MSG_RESULT([disable_hdf5 has the value x$disabled_hdf5])
+if test x$disabled_hdf5 = xyes; then
+    { echo "$as_me:$LINENO: WARNING: ===================================" >&5
+echo "$as_me: WARNING: ===================================" >&2;};
+    { echo "$as_me:$LINENO: WARNING: No HDF5 functionality will be available in libfmio" >&5
+echo "$as_me: WARNING: No HDF5 functionality will be available in libfmio" >&2;}
+    { echo "$as_me:$LINENO: WARNING: ===================================" >&5
+echo "$as_me: WARNING: ===================================" >&2;};
+fi
 
 # Checks for libraries that are required.
 saved_CPPFLAGS="$CPPFLAGS"
@@ -2708,67 +2713,17 @@ fi
 
 fi
 
-echo "$as_me:$LINENO: result: disable_hdf5 has the value x$disabled_hdf5" >&5
-echo "${ECHO_T}disable_hdf5 has the value x$disabled_hdf5" >&6
-if test x$disabled_hdf5 = xyes; then
-    { echo "$as_me:$LINENO: WARNING: ===================================" >&5
-echo "$as_me: WARNING: ===================================" >&2;};
-    { echo "$as_me:$LINENO: WARNING: No HDF5 functionality will be available in libfmio" >&5
-echo "$as_me: WARNING: No HDF5 functionality will be available in libfmio" >&2;}
-    { echo "$as_me:$LINENO: WARNING: ===================================" >&5
-echo "$as_me: WARNING: ===================================" >&2;};
-fi
 
-if test  x$disabled_hdf5 = xyes ; then
+if test  x$disabled_hdf5 = xyes; then
     { echo "$as_me:$LINENO: WARNING: ===================================" >&5
 echo "$as_me: WARNING: ===================================" >&2;};
-    { echo "$as_me:$LINENO: WARNING: Since libhdf5 is disabled,libfmcol will also be disabled" >&5
-echo "$as_me: WARNING: Since libhdf5 is disabled,libfmcol will also be disabled" >&2;}
+    { echo "$as_me:$LINENO: WARNING: Since libhdf5 is disabled, libfmcol will also be disabled" >&5
+echo "$as_me: WARNING: Since libhdf5 is disabled, libfmcol will also be disabled" >&2;}
     { echo "$as_me:$LINENO: WARNING: ===================================" >&5
 echo "$as_me: WARNING: ===================================" >&2;};
 else
-
-# Add path to include files
-saved_CPPFLAGS="$CPPFLAGS"
-saved_LIBS="$LIBS"
-
-# Check whether --with-hlhdf or --without-hlhdf was given.
-if test "${with_hlhdf+set}" = set; then
-  withval="$with_hlhdf"
-
-else
-  with_hlhdf=yes
-fi;
-    addincdir="$with_hlhdf"
-    if ! test -x $addincdir; then
-	{ { echo "$as_me:$LINENO: error: Cannot find directory $addincdir" >&5
-echo "$as_me: error: Cannot find directory $addincdir" >&2;}
-   { (exit 1); exit 1; }; }
-    else
-	CPPFLAGS="$CPPFLAGS -I$addincdir"
-    fi
-
-
-# Add path to include files
-saved_CPPFLAGS="$CPPFLAGS"
-saved_LIBS="$LIBS"
-
-# Check whether --with-smhi_saf or --without-smhi_saf was given.
-if test "${with_smhi_saf+set}" = set; then
-  withval="$with_smhi_saf"
-
-else
-  with_smhi_saf=yes
-fi;
-    addincdir="$with_smhi_saf"
-    if ! test -x $addincdir; then
-	{ { echo "$as_me:$LINENO: error: Cannot find directory $addincdir" >&5
-echo "$as_me: error: Cannot find directory $addincdir" >&2;}
-   { (exit 1); exit 1; }; }
-    else
-	CPPFLAGS="$CPPFLAGS -I$addincdir"
-    fi
-
+    #FM_ADDINC([hlhdf])
+    #FM_ADDINC([smhi_saf])
 
 # Checks for libraries that are required.
 saved_CPPFLAGS="$CPPFLAGS"

@@ -29,7 +29,7 @@
 # NA
 #
 # CVS_ID:
-# $Id: configure.ac,v 1.2 2007-09-07 17:02:59 steingod Exp $
+# $Id: configure.ac,v 1.3 2007-09-12 13:36:55 steingod Exp $
 #
 
 AC_PREREQ(2.59)
@@ -140,21 +140,21 @@ FM_USELIB([hdf5],[H5Fopen])
 
 FM_REQLIB([fmutil],[fmivec])
 
-FM_REQLIB([fmio],[fm_readheader])
-AC_MSG_RESULT([disable_hdf5 has the value x$disabled_hdf5])
+##AC_MSG_RESULT([disable_hdf5 has the value x$disabled_hdf5])
 if test x$disabled_hdf5 = xyes; then
     AC_MSG_WARN([===================================]);
     AC_MSG_WARN([No HDF5 functionality will be available in libfmio])
     AC_MSG_WARN([===================================]);
 fi
+FM_REQLIB([fmio],[fm_readheader])
 
-if test [ x$disabled_hdf5 = xyes ]; then
+if test  x$disabled_hdf5 = xyes; then
     AC_MSG_WARN([===================================]);
-    AC_MSG_WARN([Since libhdf5 is disabled,libfmcol will also be disabled])
+    AC_MSG_WARN([Since libhdf5 is disabled, libfmcol will also be disabled])
     AC_MSG_WARN([===================================]);
 else
-    FM_ADDINC([hlhdf])
-    FM_ADDINC([smhi_saf])
+    #FM_ADDINC([hlhdf])
+    #FM_ADDINC([smhi_saf])
     FM_REQLIB([fmcol],[read123])
 fi
 
