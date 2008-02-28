@@ -22,10 +22,10 @@
 # within memory bounds.
 #
 # CVS_ID:
-# $Id: readsig.R,v 1.2 2008-02-28 18:51:47 steingod Exp $
+# $Id: read124.R,v 1.1 2008-02-28 18:51:47 steingod Exp $
 #
 
-readsig <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
+read124 <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
 
     if (missing(filename)) {
 	cat("Husk at filnavn må oppgis...\n")
@@ -51,10 +51,6 @@ readsig <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
     nopix <- 13*13
     size <- tmp$noobs*nopix
     tid <- vector(mode="integer",length=size)
-    stid <- vector(mode="integer",length=size)
-    N <- vector(mode="integer",length=size)
-    E <- vector(mode="integer",length=size)
-    sss <- vector(mode="integer",length=size)
     k1 <- real(length=size)
     k2 <- real(length=size)
     k3a <- real(length=size)
@@ -64,22 +60,22 @@ readsig <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
     soz <- real(length=size)
     saz <- real(length=size)
     raz <- real(length=size)
+    cm <- real(length=size)
     cat("\nThe necessary vectors are allocated...\n")
     
     cat("Reading data...\n")
-    tmp <- .C("read124",
+    tmp <- .C("Rread124",
 	filename=as.character(filename),
 	noobs=as.integer(tmp$noobs),nopix=as.integer(nopix),
 	classname=as.character(classname),
 	station=as.character(station),
 	start=as.integer(start),end=as.integer(end),
-	stid=as.integer(stid),tid=as.integer(tid),
-	N=as.integer(N),
-	E=as.integer(E), sss=as.integer(sss),
+	tid=as.integer(tid),
 	k1=as.real(k1), k2=as.real(k2), k3a=as.real(k3a),
 	k3b=as.real(k3b),
 	k4=as.real(k4), k5=as.real(k5), 
 	soz=as.real(soz), saz=as.real(saz), raz=as.real(raz),
+	cm=as.integer(cm),
 	package="mipolsat"
 	)
 
@@ -93,8 +89,6 @@ readsig <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
     tmp$soz[tmp$soz < -100] <- NA
     tmp$saz[tmp$saz < -100] <- NA
     tmp$raz[tmp$raz < -100] <- NA
-    tmp$N[tmp$N < 0] <- NA
-    tmp$E[tmp$E < 0] <- NA
-    tmp$sss[tmp$sss < 0] <- NA
+    tmp$cm[tmp$cm < 0] <- NA
     return(tmp)
 }

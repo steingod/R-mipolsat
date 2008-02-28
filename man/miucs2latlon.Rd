@@ -25,7 +25,7 @@ miucs2latlon(northings, eastings)
 and metadata.
 }
 
-\seealso{\link{latlon2ucs}}
+\seealso{\link{milatlon2ucs}}
 
 \author{
     Øystein Godøy (\email{o.godoy@met.no})

@@ -27,14 +27,14 @@
 # NA
 #
 # CVS_ID:
-# $Id: Makevars,v 1.3 2007-09-12 14:39:25 steingod Exp $
+# $Id: Makevars,v 1.4 2008-02-28 18:51:48 steingod Exp $
 #
 #
 
-PKG_CPPFLAGS= -I./  -I/disk1/hdf5lib-1p6p/include -I/home/steingod/software/libs/include
+PKG_CPPFLAGS= -I./  -I/disk1/software/include -I/home/steingod/software/libs/include
 
-PKG_CFLAGS= -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m32 -march=i386 -mtune=generic -fasynchronous-unwind-tables -DPACKAGE_NAME=\"mipolsat\ R-package\" -DPACKAGE_TARNAME=\"mipolsat-r-package\" -DPACKAGE_VERSION=\"0.2\" -DPACKAGE_STRING=\"mipolsat\ R-package\ 0.2\" -DPACKAGE_BUGREPORT=\"o.godoy@met.no\" -DHAVE_LIBTIFF=1 -DHAVE_LIBHDF5=1 -DHAVE_LIBFMUTIL=1 -DHAVE_LIBFMIO=1 -DHAVE_LIBFMCOL=1 
+PKG_CFLAGS= -g -O2 -DPACKAGE_NAME=\"mipolsat\ R-package\" -DPACKAGE_TARNAME=\"mipolsat-r-package\" -DPACKAGE_VERSION=\"0.2\" -DPACKAGE_STRING=\"mipolsat\ R-package\ 0.2\" -DPACKAGE_BUGREPORT=\"o.godoy@met.no\" -DHAVE_LIBTIFF=1 -DHAVE_LIBHDF5=1 -DHAVE_LIBFMUTIL=1 -DHAVE_LIBFMIO=1 -DHAVE_LIBFMCOL=1 
 
 PKG_LDFLAGS=
 
-PKG_LIBS= -lfmcol -lfmio -lfmutil -L/home/steingod/software/libs/lib -lhdf5 -L/disk1/hdf5lib-1p6p/lib -ltiff 
+PKG_LIBS= -lfmcol -lfmio -lfmutil -L/home/steingod/software/libs/lib -lhdf5 -L/disk1/software/lib -ltiff 

@@ -1,10 +1,5 @@
-\name{
-    plotctval
-}
-
-\alias{
-    plotctval
-}
+\name{plotctval}
+\alias{plotctval}
 
 \title{
     Plot NWCSAF PPS cloud types versus SYNOP observations

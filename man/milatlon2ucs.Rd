@@ -24,7 +24,7 @@ milatlon2ucs(latitude, longitude)
 and metadata.
 }
 
-\seealso{\link{ucs2latlon}}
+\seealso{\link{miucs2latlon}}
 
 \author{
     Øystein Godøy (\email{o.godoy@met.no})

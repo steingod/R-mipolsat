@@ -24,7 +24,7 @@
  * NA
  *
  * CVS_ID:
- * $Id: checkrec.c,v 1.1 2007-09-07 17:03:00 steingod Exp $
+ * $Id: checkrec.c,v 1.2 2008-02-28 18:51:48 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -52,13 +52,19 @@ void checkrec(char **infile, int *noobs,
     sprintf(scrit.station,"%s",*station);
     scrit.t_start = (time_t) *start;
     scrit.t_end = (time_t) *end;
+    /*
     printf(" > %d %d\n", (int) scrit.t_start,(int) scrit.t_end);
     printf(" > %s\n",scrit.classname);
+    */
+    fmlogmsg(where,"Searching for class %s and time period %d - %d",
+    scrit.classname, (int) scrit.t_start, (int) scrit.t_end);
 
     if ((*noobs=checknorec(*infile, &scrit)) <= 0) {
 	error(where,"File trouble, or no data found...");
 	printf(" Return value: %d\n", *noobs);
     }
+
+    fmlogmsg(where,"Number of matching recoords retrieved");
 
     return;
 }

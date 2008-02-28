@@ -1,10 +1,5 @@
-\name{
-    readsnowsig
-}
-
-\alias{
-    readsnowsig
-}
+\name{readsnowsig}
+\alias{readsnowsig}
 
 \title{
     Reads FMCOL HDF5 files containing AVHRR data collocated with other

@@ -1,10 +1,5 @@
-\name{
-    readsig
-}
-
-\alias{
-    readsig
-}
+\name{readsig}
+\alias{readsig}
 
 \title{
     Reads FMCOL HDF5 files containing AVHRR data collocated with other

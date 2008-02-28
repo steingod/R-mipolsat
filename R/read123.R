@@ -22,10 +22,10 @@
 # within memory bounds.
 #
 # CVS_ID:
-# $Id: readsig.R,v 1.2 2008-02-28 18:51:47 steingod Exp $
+# $Id: read123.R,v 1.1 2008-02-28 18:51:47 steingod Exp $
 #
 
-readsig <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
+read123 <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
 
     if (missing(filename)) {
 	cat("Husk at filnavn må oppgis...\n")
@@ -67,7 +67,7 @@ readsig <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
     cat("\nThe necessary vectors are allocated...\n")
     
     cat("Reading data...\n")
-    tmp <- .C("read124",
+    tmp <- .C("Rread123",
 	filename=as.character(filename),
 	noobs=as.integer(tmp$noobs),nopix=as.integer(nopix),
 	classname=as.character(classname),

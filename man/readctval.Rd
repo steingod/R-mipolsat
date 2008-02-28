@@ -1,10 +1,5 @@
-\name{
-    readctval
-}
-
-\alias{
-    readctval
-}
+\name{readctval}
+\alias{readctval}
 
 \title{
     Reads FMCOL HDF5 files containing cloud type products

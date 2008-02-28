@@ -1,9 +1,9 @@
 Package: mipolsat
-Version: 0.2
-Date: 2006-04-26
+Version: 0.3
+Date: 2008-02-27
 Title: Useful functions for handling locally processed satellite data
-Author: Øystein Godøy <o.godoy@met.no>
-Maintainer: Øystein Godøy <o.godoy@met.no>
+Author: Oystein Godoy <o.godoy@met.no>
+Maintainer: Oystein Godoy <o.godoy@met.no>
 Depends: 
 Imports:
 Suggests: 
