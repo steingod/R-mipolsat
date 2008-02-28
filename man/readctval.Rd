@@ -32,7 +32,7 @@
 }
 
 \seealso{
-    \link{plotctval}, \link{readsig}, \link{readsnowsig}
+    \link{plotctval}, \link{readsnowsig}, \link{read123}, \link{read124}
 }
 
 \author{

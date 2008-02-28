@@ -32,7 +32,7 @@
 }
 
 \seealso{
-    \link{readctval}, \link{readsig}
+    \link{readctval}, \link{read123}, \link{read124}
 }
 
 \author{
