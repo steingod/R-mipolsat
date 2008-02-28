@@ -1,5 +1,5 @@
-\name{readsig}
-\alias{readsig}
+\name{read124}
+\alias{read124}
 
 \title{
     Reads FMCOL HDF5 files containing AVHRR data collocated with other
@@ -7,13 +7,13 @@
 }
 
 \description{
-    FMCOL HDF5 collocation files containing AVHRR data and other data like
-    e.g. NWP, SYNOP/DRAU, Cloud Classifications, OSISAF SSI and OSISAF
-    DLI.
+    FMCOL HDF5 collocation files containing AVHRR data, NWP and NWCSAF
+    PPS Cloud Type data are read and the contents (or some of the
+    contents) are returned to R for further analysis.
 }
 
 \usage{
-    readsig(filename,classname="cloud",station="NA",start="NA",end="NA")
+    read124(filename,classname="cloud",station="NA",start="NA",end="NA")
 }
 
 \arguments{
@@ -32,7 +32,7 @@
 }
 
 \seealso{
-    \link{readctval}, \link{readsnowsig}
+    \link{readctval}, \link{readsnowsig}, \link{read123}
 }
 
 \author{
