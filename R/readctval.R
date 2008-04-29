@@ -12,6 +12,9 @@
 # Probably in the underlying C-function...
 # C functions does not transfer strings back properly...
 #
+# CVS_ID:
+# $Id: readctval.R,v 1.2 2008-04-29 16:28:44 steingod Exp $
+#
 # AUTHOR:
 # Øystein Godøy, MET/FOU, 30.01.2003
 #
@@ -30,10 +33,6 @@ readctval <- function(filename,classname="cloud",station="NA",start="NA",end="NA
 
     noobs <- 0
 
-    #dyn.load("/home/steingod/software/R-functions/dumpcol/checkrec.so")
-    #if
-    #(!is.loaded("/home/steingod/software/R-functions/dumpcol/checkrec.so"))
-    #return
     tmp <- .C("checkrec",
 	filename=as.character(filename),
 	noobs=as.integer(noobs),
@@ -69,7 +68,10 @@ readctval <- function(filename,classname="cloud",station="NA",start="NA",end="NA
 	E=as.integer(E), sss=as.integer(sss),
 	cm=as.integer(cm))
 
-    cat("Now back in R...\n")
+    cat(paste("Number of records found:",tmp$noobs,"\n"))
+    if (tmp$noobs <= 0) {
+	return(cat("Bailing out...\n"))
+    }
     cat(paste("Fant:",tmp$noobs,"lagrede enheter etter forkastning\n"))
     validata <- tmp$noobs*169
 

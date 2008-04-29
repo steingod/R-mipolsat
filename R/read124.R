@@ -22,7 +22,7 @@
 # within memory bounds.
 #
 # CVS_ID:
-# $Id: read124.R,v 1.1 2008-02-28 18:51:47 steingod Exp $
+# $Id: read124.R,v 1.2 2008-04-29 16:28:44 steingod Exp $
 #
 
 read124 <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
@@ -46,7 +46,10 @@ read124 <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
 	classname=as.character(classname),
 	station=as.character(station),
 	start=as.integer(start),end=as.integer(end),package="mipolsat")
-    cat(paste("Number of records found:",tmp$noobs))
+    cat(paste("Number of records found:",tmp$noobs,"\n"))
+    if (tmp$noobs <= 0) {
+	return(cat("Bailing out...\n"))
+    }
 
     nopix <- 13*13
     size <- tmp$noobs*nopix
