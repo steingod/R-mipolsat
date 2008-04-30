@@ -12,11 +12,14 @@
 # Probably in the underlying C-function...
 # C functions does not transfer strings back properly...
 #
+# CVS_ID:
+# $Id: readdlidev.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
+#
 # AUTHOR:
 # Øystein Godøy, MET/FOU, 30.01.2003
 #
 # CVS_ID:
-# $Id: readdlidev.R,v 1.1 2007-09-07 17:02:59 steingod Exp $
+# $Id: readdlidev.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
 #
 
 readdlidev <- function(filename,

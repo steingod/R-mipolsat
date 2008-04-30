@@ -1,3 +1,35 @@
+#
+# NAME:
+# NA
+#
+# PURPOSE:
+# NA
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# NA
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: ch3brefl.R,v 1.3 2008-04-30 19:37:33 steingod Exp $
+#  
+
 FM_PLANCKC1 <- 1.1910427e-5
 FM_PLANCKC2 <- 1.4387752
 

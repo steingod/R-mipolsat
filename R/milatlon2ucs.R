@@ -1,3 +1,34 @@
+#
+# NAME:
+# NA
+#
+# PURPOSE:
+# NA
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# NA
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: milatlon2ucs.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
+
 milatlon2ucs <- function(lat,lon) {
     
     rearth <- 6371.

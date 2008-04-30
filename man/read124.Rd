@@ -27,12 +27,12 @@
 }
 
 \value{
-    A \link{data.frame} containing the data. Use \link{names} to see the
+    A \link{list} containing the data. Use \link{names} to see the
     variables. 
 }
 
 \seealso{
-    \link{readctval}, \link{readsnowsig}, \link{read123}
+    \link{readctval}, \link{readsnowsig}, \link{read123}, \link{readfmcol}, \link{fmcolcat}
 }
 
 \author{
@@ -40,7 +40,7 @@
 }
 
 \examples{
-    t <- readsig(file="/disk2/collocate/output/cloud_20070831.hdf5")
+    t <- read124(file="/disk2/collocate/output/cloud_20070831.hdf5")
 }
 
 \keyword{

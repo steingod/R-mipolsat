@@ -1,3 +1,34 @@
+#
+# NAME:
+# NA
+#
+# PURPOSE:
+# NA
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# NA
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: compareAVHRRimages.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
+
 compareAVHRRimages <- function(dataset1, dataset2, channel=1, map=TRUE) {
 
     if (missing(dataset1) || missing(dataset2)) {

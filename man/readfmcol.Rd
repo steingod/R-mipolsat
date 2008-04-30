@@ -1,23 +1,25 @@
-\name{read123}
-\alias{read123}
+\name{readfmcol}
+\alias{readfmcol}
 
 \title{
     Reads FMCOL HDF5 files containing AVHRR data collocated with other
-    data
+    data, and concatenates them
 }
 
 \description{
-    FMCOL HDF5 collocation files containing AVHRR data, NWP and SYNOP data
+    FMCOL HDF5 collocation files containing collocated data 
     are read and the contents (or some of the contents) are returned to R
-    for further analysis.
+    for further analysis and concatenation.
 }
 
 \usage{
-    read123(filename,classname="cloud",station="NA",start="NA",end="NA")
+    readfmcol(path,pattern,method,classname="cloud",station="NA",start="NA",end="NA")
 }
 
 \arguments{
-    \item{filename}{file to read}
+    \item{path}{path to the files to read}
+    \item{pattern}{optional \link{regular expression} pattern for files to match}
+    \item{method}{the read functionality to use e.g. read123}
     \item{classname}{text string to search for in the HDF5 file, defaults
     to "cloud"}
     \item{station}{text string containing station identification}
@@ -32,7 +34,7 @@
 }
 
 \seealso{
-    \link{readctval}, \link{readsnowsig}, \link{read124}, \link{readfmcol}, \link{fmcolcat}
+    \link{readctval}, \link{readsnowsig}, \link{read123}, \link{read124}, \link{fmcolcat}
 }
 
 \author{
@@ -40,7 +42,7 @@
 }
 
 \examples{
-    t <- read123(file="/disk2/collocate/output/cloud_20070831.hdf5")
+    t <- readfmcol(path="/disk2/collocate/output",pattern=".hdf5$")
 }
 
 \keyword{

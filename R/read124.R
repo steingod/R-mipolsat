@@ -13,6 +13,9 @@
 # Probably in the underlying C-function...
 # C functions does not transfer strings back properly...
 #
+# CVS_ID:
+# $Id: read124.R,v 1.3 2008-04-30 19:37:33 steingod Exp $
+#
 # AUTHOR:
 # Øystein Godøy, MET/FOU, 30.01.2003
 #
@@ -22,7 +25,7 @@
 # within memory bounds.
 #
 # CVS_ID:
-# $Id: read124.R,v 1.2 2008-04-29 16:28:44 steingod Exp $
+# $Id: read124.R,v 1.3 2008-04-30 19:37:33 steingod Exp $
 #
 
 read124 <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {

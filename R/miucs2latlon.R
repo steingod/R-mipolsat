@@ -1,3 +1,34 @@
+#
+# NAME:
+# NA
+#
+# PURPOSE:
+# NA
+#
+# REQUIREMENTS:
+# NA
+#
+# INPUT:
+# NA
+#
+# OUTPUT:
+# NA
+#
+# NOTES:
+# NA
+#
+# BUGS:
+# NA
+#
+# AUTHOR:
+# NA
+#
+# MODIFIED:
+# NA
+#
+# CVS_ID:
+# $Id: miucs2latlon.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
+
 miucs2latlon <- function(northings,eastings) {
 
     rearth <- 6371.

@@ -1,9 +1,9 @@
 /*
  * NAME:
- * checkrec.c
+ * classnames.c
  *
  * PURPOSE:
- * To get the number of records within the file.
+ * To get the list of classnames available within the file.
  *
  * REQUIREMENTS:
  *
@@ -26,7 +26,7 @@
  * NA
  *
  * CVS_ID:
- * $Id: checkrec.c,v 1.3 2008-04-30 19:37:34 steingod Exp $
+ * $Id: classnames.c,v 1.1 2008-04-30 19:37:34 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -43,21 +43,20 @@
 int sm_debug=1;
 */
 
-void checkrec(char **infile, int *noobs, 
-	char **classname, char **station,
-	int *start, int *end) {
+void classnames(char **infile, int *noobs) {
 
     char *where="checkrec";
-    skeys scrit = {"cloud","NA",0,0};
+    /*
+    skeys scrit = {NULL,"NA",0,0};
 
     sprintf(scrit.classname,"%s",*classname);
     sprintf(scrit.station,"%s",*station);
     scrit.t_start = (time_t) *start;
     scrit.t_end = (time_t) *end;
-    fmlogmsg(where,"Searching for class %s and time period %d - %d",
-    scrit.classname, (int) scrit.t_start, (int) scrit.t_end);
+    */
+    fmlogmsg(where,"Searching for available classnames");
 
-    *noobs=checknorec(*infile, &scrit);
+    *noobs=getclassnames(*infile);
     if (*noobs <= 0) {
 	fmlogmsg(where,"File trouble, or no data found (%d)...", *noobs);
     }
