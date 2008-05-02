@@ -14,7 +14,7 @@
  * NA
  *
  * NOTES:
- * NA
+ * Calls getclassnames in libfmcol.
  *
  * BUGS:
  * NA
@@ -26,7 +26,7 @@
  * NA
  *
  * CVS_ID:
- * $Id: classnames.c,v 1.1 2008-04-30 19:37:34 steingod Exp $
+ * $Id: classnames.c,v 1.2 2008-05-02 21:37:56 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -43,23 +43,20 @@
 int sm_debug=1;
 */
 
-void classnames(char **infile, int *noobs) {
+void classnames(char **infile, int *noobs, char **classes) {
 
-    char *where="checkrec";
-    /*
-    skeys scrit = {NULL,"NA",0,0};
+    char *where="classnames";
+    cnames cn;
+    int i;
 
-    sprintf(scrit.classname,"%s",*classname);
-    sprintf(scrit.station,"%s",*station);
-    scrit.t_start = (time_t) *start;
-    scrit.t_end = (time_t) *end;
-    */
-    fmlogmsg(where,"Searching for available classnames");
-
-    *noobs=getclassnames(*infile);
+    *noobs=getclassnames(*infile, &cn);
     if (*noobs <= 0) {
 	fmlogmsg(where,"File trouble, or no data found (%d)...", *noobs);
     }
+    for (i=0;i<cn.noobs;i++) {
+	sprintf(classes[i],"%s",cn.name[i]);
+    }
+    *noobs = cn.noobs;
 
     return;
 }

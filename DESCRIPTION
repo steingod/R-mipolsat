@@ -1,6 +1,6 @@
 Package: mipolsat
-Version: 0.4
-Date: 2008-02-27
+Version: 0.5
+Date: 2008-05-02
 Title: Useful functions for handling locally processed satellite data
 Author: Oystein Godoy <o.godoy@met.no>
 Maintainer: Oystein Godoy <o.godoy@met.no>
@@ -8,6 +8,6 @@ Depends:
 Imports:
 Suggests: 
 Description: Reading and processing of locally processed polar platform
-	satellite data.
+	satellite data as well as corresponding matchup data.
 License: GPL version 2 or newer
 URL: http://www.r-project.org, http://www.met.no
