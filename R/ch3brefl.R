@@ -27,7 +27,7 @@
 # NA
 #
 # CVS_ID:
-# $Id: ch3brefl.R,v 1.3 2008-04-30 19:37:33 steingod Exp $
+# $Id: ch3brefl.R,v 1.4 2008-06-20 09:23:16 mariak Exp $
 #  
 
 FM_PLANCKC1 <- 1.1910427e-5
@@ -84,7 +84,7 @@ fm_rad2temp <- function(radiance,satname) {
 
 fm_esd <- function(doy) {
 
-    theta0 <- (2.*pi*doy)*365.
+    theta0 <- (2.*pi*doy)/365.
     d <- (1.000110
 	+0.034221*cos(theta0)
 	+0.001280*sin(theta0)
