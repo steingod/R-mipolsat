@@ -13,16 +13,19 @@
 # C functions does not transfer strings back properly...
 #
 # AUTHOR:
-# Øystein Godøy, MET/FOU, 30.01.2003
+# Ã˜ystein GodÃ¸y, MET/FOU, 30.01.2003
+# 
+# MODIFIED:
+# Ã˜ystein GodÃ¸y, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: plotctval.R,v 1.1 2007-09-07 17:02:59 steingod Exp $
+# $Id: plotctval.R,v 1.2 2013-04-11 20:29:04 steingod Exp $
 #
 
 plotctval <- function(d=NULL,type="N",mylevels=40) {
 
     if (missing(d)) {
-	cat("Husk at objektnavn må oppgis...\n")
+	cat("Husk at objektnavn mÃ¥ oppgis...\n")
 	return;
     }
     mybreaks <- c(-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,

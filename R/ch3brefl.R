@@ -24,10 +24,10 @@
 # NA
 #
 # MODIFIED:
-# NA
+# Ãystein GodÃ¸y, METNO/FOU, 2013-04-11
 #
 # CVS_ID:
-# $Id: ch3brefl.R,v 1.4 2008-06-20 09:23:16 mariak Exp $
+# $Id: ch3brefl.R,v 1.5 2013-04-11 20:29:04 steingod Exp $
 #  
 
 FM_PLANCKC1 <- 1.1910427e-5

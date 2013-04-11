@@ -21,14 +21,14 @@
 # NA
 #
 # AUTHOR:
-# Øystein Godøy, METNO/FOU
+# Ã˜ystein GodÃ¸y, METNO/FOU
 #
 # MODIFIED:
-# Øystein Godøy, METNO/FOU, 10.09.2007: Added palette dependency on
+# Ã˜ystein GodÃ¸y, METNO/FOU, 10.09.2007: Added palette dependency on
 # channel selection.
 #
 # CVS_ID:
-# $Id: createAVHRRimage.R,v 1.3 2007-09-10 09:48:34 steingod Exp $
+# $Id: createAVHRRimage.R,v 1.4 2013-04-11 20:29:04 steingod Exp $
 #
 #
 createAVHRRimage <- function(dataset, channel=1, method="N", 

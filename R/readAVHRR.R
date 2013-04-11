@@ -22,13 +22,13 @@
 # NA
 #
 # AUTHOR:
-# �ystein God�y, METNO/FOU
+# Øystein Godøy, METNO/FOU
 #
 # MODIFIED:
-# NA
+# Øystein Godøy, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: readAVHRR.R,v 1.2 2007-09-10 09:48:34 steingod Exp $
+# $Id: readAVHRR.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 #
 #
 readAVHRR <- function(filename,nomiss=TRUE) {

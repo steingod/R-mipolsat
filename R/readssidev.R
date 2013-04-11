@@ -13,17 +13,17 @@
 # C functions does not transfer strings back properly...
 #
 # AUTHOR:
-# Øystein Godøy, MET/FOU, 30.01.2003
+# Ã˜ystein GodÃ¸y, MET/FOU, 30.01.2003
 #
 # CVS_ID:
-# $Id: readssidev.R,v 1.1 2007-09-07 17:02:59 steingod Exp $
+# $Id: readssidev.R,v 1.2 2013-04-11 20:29:04 steingod Exp $
 #
 
 readssidev <- function(filename,
     station="NA",start="NA",end="NA",classname="DLIDEV") {
 
     if (missing(filename)) {
-	cat("Husk at filnavn må oppgis...\n")
+	cat("Husk at filnavn mÃ¥ oppgis...\n")
 	return;
     }
 

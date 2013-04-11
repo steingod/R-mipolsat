@@ -13,13 +13,16 @@
 # C functions does not transfer strings back properly...
 #
 # AUTHOR:
-# Øystein Godøy, MET/FOU, 30.01.2003
+# Ã˜ystein GodÃ¸y, MET/FOU, 30.01.2003
+#
+# MODIFIED:
+# Ã˜ystein GodÃ¸y, METNO/FOU, 2013-04-11 
 #
 
 plotsnowsig <- function(myobject,type="a1/soz",correction=FALSE,soztv=90,sky="NA",mylevels=20) {
 
     if (missing(myobject)) {
-	cat("Husk at objektnavn må oppgis...\n")
+	cat("Husk at objektnavn mÃ¥ oppgis...\n")
 	return;
     }
 

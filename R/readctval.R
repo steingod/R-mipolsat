@@ -13,16 +13,19 @@
 # C functions does not transfer strings back properly...
 #
 # CVS_ID:
-# $Id: readctval.R,v 1.2 2008-04-29 16:28:44 steingod Exp $
+# $Id: readctval.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 #
 # AUTHOR:
-# Øystein Godøy, MET/FOU, 30.01.2003
+# Ã˜ystein GodÃ¸y, MET/FOU, 30.01.2003
+#
+# MODIFIED:
+# Ã˜ystein GodÃ¸y, METNO/FOU, 2013-04-11 
 #
 
 readctval <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
 
     if (missing(filename)) {
-	cat("Husk at filnavn må oppgis...\n")
+	cat("Husk at filnavn mÃ¥ oppgis...\n")
 	return;
     }
 

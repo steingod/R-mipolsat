@@ -29,7 +29,7 @@
 # NA
 #
 # CVS_ID:
-# $Id: configure.ac,v 1.3 2007-09-12 13:36:55 steingod Exp $
+# $Id: configure.ac,v 1.4 2013-04-11 20:29:03 steingod Exp $
 #
 
 AC_PREREQ(2.59)

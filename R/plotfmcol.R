@@ -21,13 +21,13 @@
 # NA
 #
 # AUTHOR:
-# �ystein God�y, METNO/FOU, 08.05.2008 
+# Øystein Godøy, METNO/FOU, 08.05.2008 
 #
 # MODIFIED:
-# NA
+# Øystein Godøy, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: plotfmcol.R,v 1.1 2008-05-09 12:22:58 steingod Exp $
+# $Id: plotfmcol.R,v 1.2 2013-04-11 20:29:04 steingod Exp $
 #
 
 plotfmcol <- function(dataset, feature="T4", xaxis="tid", suncor=FALSE,

@@ -15,7 +15,7 @@
  * Øystein Godøy, METNO/FOU, 27.04.2006 
  *
  * CVS_ID:
- * $Id: readdata.c,v 1.4 2007-09-10 09:48:35 steingod Exp $
+ * $Id: readdata.c,v 1.5 2013-04-11 20:29:04 steingod Exp $
  */
 
 #include <readdata.h>

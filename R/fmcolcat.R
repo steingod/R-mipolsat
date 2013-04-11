@@ -21,13 +21,13 @@
 # NA
 #
 # AUTHOR:
-# �ystein God�y, METNO/FOU, 30.04.2008
+# Øystein Godøy, METNO/FOU, 30.04.2008
 #
 # MODIFIED:
-# NA
+# Øystein Godøy, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: fmcolcat.R,v 1.2 2008-05-02 21:37:55 steingod Exp $
+# $Id: fmcolcat.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 #
 
 fmcolcat <- function(mylists) {

@@ -21,13 +21,13 @@
 # NA
 #
 # AUTHOR:
-# Øystein Godøy, METNO/FOU, 29.04.2008 
+# Ã˜ystein GodÃ¸y, METNO/FOU, 29.04.2008 
 #
 # MODIFIED:
 # NA
 #
 # CVS_ID:
-# $Id: readfmcol.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
+# $Id: readfmcol.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 
 readfmcol <- function(path, pattern=NULL, method, classname="cloud",
 station="NA",start="NA",end="NA") {

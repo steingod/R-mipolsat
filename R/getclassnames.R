@@ -24,10 +24,10 @@
 # NA
 #
 # MODIFIED:
-# NA
+# Ãystein GodÃ¸y, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: getclassnames.R,v 1.2 2008-05-02 21:37:55 steingod Exp $
+# $Id: getclassnames.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 #
 
 getclassnames <- function(filename) {

@@ -14,20 +14,20 @@
 # C functions does not transfer strings back properly...
 #
 # AUTHOR:
-# Øystein Godøy, MET/FOU, 30.01.2003
+# Ã˜ystein GodÃ¸y, MET/FOU, 30.01.2003
 #
 # MODIFIED:
-# Øystein Godøy, met.no/FOU, 20.11.2004
+# Ã˜ystein GodÃ¸y, met.no/FOU, 20.11.2004
 # Added extraction of NWP and slightly modified data reduction...
 #
 # CVS_ID:
-# $Id: readsnowsig.R,v 1.1 2007-09-07 17:02:59 steingod Exp $
+# $Id: readsnowsig.R,v 1.2 2013-04-11 20:29:04 steingod Exp $
 #
 
 readsnowsig <- function(filename,classname="snow",station="NA",start="NA",end="NA") {
 
     if (missing(filename)) {
-	cat("Husk at filnavn må oppgis...\n")
+	cat("Husk at filnavn mÃ¥ oppgis...\n")
 	return;
     }
 

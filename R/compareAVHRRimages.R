@@ -21,13 +21,13 @@
 # NA
 #
 # AUTHOR:
-# NA
+# Ãystein GodÃ¸y, METNO/FOU
 #
 # MODIFIED:
 # NA
 #
 # CVS_ID:
-# $Id: compareAVHRRimages.R,v 1.2 2008-04-30 19:37:33 steingod Exp $
+# $Id: compareAVHRRimages.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 
 compareAVHRRimages <- function(dataset1, dataset2, channel=1, map=TRUE) {
 

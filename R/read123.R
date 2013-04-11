@@ -14,21 +14,22 @@
 # C functions does not transfer strings back properly...
 #
 # AUTHOR:
-# Øystein Godøy, MET/FOU, 30.01.2003
+# Ã˜ystein GodÃ¸y, MET/FOU, 30.01.2003
 #
 # MODIFIED:
-# Øystein Godøy, met.no/FOU, 12.10.2004 
+# Ã˜ystein GodÃ¸y, met.no/FOU, 12.10.2004 
 # Reduce the number of vectors to read in order to be able to handle data
 # within memory bounds.
+# Ã˜ystein GodÃ¸y, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: read123.R,v 1.2 2008-04-29 16:28:44 steingod Exp $
+# $Id: read123.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
 #
 
 read123 <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
 
     if (missing(filename)) {
-	cat("Husk at filnavn må oppgis...\n")
+	cat("Husk at filnavn mÃ¥ oppgis...\n")
 	return;
     }
 
