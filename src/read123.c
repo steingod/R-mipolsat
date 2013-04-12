@@ -25,14 +25,15 @@
  *
  * MODIFIED:
  * Øystein Godøy, met.no/FOU, 12.10.2004: See readsig.sl
+ * Øystein Godøy, METNO/FOU, 2013-04-12: Changed usage of header files.
  *
  * CVS_ID:
- * $Id: read123.c,v 1.1 2008-02-28 18:51:48 steingod Exp $
+ * $Id: read123.c,v 1.2 2013-04-12 10:29:24 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
 
-#include <readctval.h>
+#include <readfmcol.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <time.h>

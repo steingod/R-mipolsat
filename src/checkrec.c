@@ -23,15 +23,15 @@
  * Øystein Godøy, MET/FOU, 21.01.2003
  *
  * MODIFIED:
- * NA
+ * Øystein Godøy, METNO/FOU, 2013-04-12: Changed usage of header files.
  *
  * CVS_ID:
- * $Id: checkrec.c,v 1.3 2008-04-30 19:37:34 steingod Exp $
+ * $Id: checkrec.c,v 1.4 2013-04-12 10:29:24 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
 
-#include <readctval.h>
+#include <readfmcol.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <time.h>
