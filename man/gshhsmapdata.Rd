@@ -1,6 +1,5 @@
-
 \name{gshhsmapdata}
-\doctype{data}
+\docType{data}
 \alias{gshhsmapdata}
 
 \title{GSHHS Low Resolution Coastlines}
