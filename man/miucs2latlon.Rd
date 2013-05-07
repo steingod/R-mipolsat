@@ -28,7 +28,7 @@ and metadata.
 \seealso{\link{milatlon2ucs}}
 
 \author{
-    Øystein Godøy (\email{o.godoy@met.no})
+    Ã˜ystein GodÃ¸y (\email{o.godoy@met.no})
 }
 \note{
 }

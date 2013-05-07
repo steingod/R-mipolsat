@@ -30,7 +30,7 @@ compareAVHRRimages(x, y, channel=1, map=TRUE, method="N")
 }
 
 \author{
-    Øystein Godøy (\email{o.godoy@met.no})
+    Ã˜ystein GodÃ¸y (\email{o.godoy@met.no})
 }
 \note{
     The current version supports map overlay only for the standard map

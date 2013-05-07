@@ -3,13 +3,28 @@
 
 \title{
     Reads FMCOL HDF5 files containing AVHRR data collocated with other
-    data, and concatenates them
+    data, and concatenates them.
 }
 
 \description{
     FMCOL HDF5 collocation files containing collocated data 
     are read and the contents (or some of the contents) are returned to R
-    for further analysis and concatenation.
+    for further analysis and concatenation. This function is a generic
+    function utilise more specialised functions. The specialised
+    functions can be hidden or visible for ordinary usage.
+
+    The objects currently supported and their numbering is:
+    \enumerate {
+        \item AVHRR data, a square box of channel data (reflectances or
+        brightness temperature) and auxiliary information like observation
+        geometry, time, number of pixels etc.
+        \item NWP data, Numerical Weather Prdeiction data, usually from the
+        operational model suite.
+        \item STDAT, in situ measurements from GTS SYNOP or DRAU files.
+        \item SAFCM, NWCSAF PPS cloudtype products.
+        \item SAFSSI, OSISAF shortwave estimates.
+        \item SAFDLI, OSISAF longwave estimates.
+    }
 }
 
 \usage{
@@ -19,7 +34,8 @@
 \arguments{
     \item{path}{path to the files to read}
     \item{pattern}{optional \link{regular expression} pattern for files to match}
-    \item{method}{the read functionality to use e.g. read123}
+    \item{method}{the read functionality to use e.g. read123, read124.
+    remember quotes.}
     \item{classname}{text string to search for in the HDF5 file, defaults
     to "cloud"}
     \item{station}{text string containing station identification}
@@ -38,7 +54,7 @@
 }
 
 \author{
-    Øystein Godøy (\email{o.godoy@met.no})
+    Ã˜ystein GodÃ¸y (\email{o.godoy@met.no})
 }
 
 \examples{

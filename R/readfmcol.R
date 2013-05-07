@@ -27,13 +27,13 @@
 # NA
 #
 # CVS_ID:
-# $Id: readfmcol.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
+# $Id: readfmcol.R,v 1.4 2013-05-07 08:37:11 steingod Exp $
 
 readfmcol <- function(path, pattern=NULL, method, classname="cloud",
-station="NA",start="NA",end="NA") {
+        station="NA",start="NA",end="NA") {
 
     if (length(pattern) == 0) {
-	cat("No pattern was specified, using all files in directory\n")
+        cat("No pattern was specified, using all files in directory\n")
     }
 
     filelist <- list.files(path,pattern,full.names=TRUE)
@@ -41,14 +41,14 @@ station="NA",start="NA",end="NA") {
     t <- vector(mode="list", length=length(filelist))
 
     for (i in 1:length(filelist)) {
-	cat(paste("Reading file:",filelist[i],"\n"))
-	if (method == "read124") {
-	    t[[i]] <- read124(filelist[i],classname,station,start,end)
-	} else if (method == "read123") {
-	    t[[i]] <- read123(filelist[i],classname,station,start,end)
-	} else {
-	    return("Unknown method\n")
-	}
+        cat(paste("Reading file:",filelist[i],"\n"))
+            if (method == "read124") {
+                t[[i]] <- read124(filelist[i],classname,station,start,end)
+            } else if (method == "read123") {
+                t[[i]] <- read123(filelist[i],classname,station,start,end)
+            } else {
+                return("Unknown method\n")
+            }
     }
 
     mydata <- fmcolcat(t)

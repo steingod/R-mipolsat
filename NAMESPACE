@@ -1,0 +1,5 @@
+useDynLib(mipolsat)
+#exportPattern("^[^\\.]")
+export(readfmcol,plotfmcol,plotsnowsig,plotctval,fmcolcat)
+export(compareAVHRRchains,compareAVHRRimages,readAVHRR,createAVHRRimage)
+export(gshhsmapdata)

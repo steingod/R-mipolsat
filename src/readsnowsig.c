@@ -28,7 +28,7 @@
  * Øystein Godøy, METNO/FOU, 2013-04-12: Changed usage of header files.
  *
  * CVS_ID:
- * $Id: readsnowsig.c,v 1.2 2013-04-12 10:29:24 steingod Exp $
+ * $Id: readsnowsig.c,v 1.3 2013-05-07 08:37:11 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -40,10 +40,6 @@
 #include <utime.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-
-/*
-   int sm_debug=1;
-   */
 
 void readsnowsig(char **infile, int *n, int *p, char **station, 
         int *start, int *end,

@@ -27,13 +27,13 @@
  * Øystein Godøy, METNO/FOU, 2013-04-12 
  *
  * CVS_ID:
- * $Id: readfmcol.h,v 1.1 2013-04-12 10:29:24 steingod Exp $
+ * $Id: readfmcol.h,v 1.2 2013-05-07 08:37:11 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
 
-#ifndef _COLDUMP_H
-#define _COLDUMP_H
+#ifndef _RCOLDUMP_H
+#define _RCOLDUMP_H
 
 /*
  * The main header file of libcollocate is required... 
@@ -41,19 +41,10 @@
  */
 #include <fmutil.h>
 #include <fmcol.h>
+/*
 #include <fmcolaccess.h>
+*/
 #include <hdf5.h>
-/*
-#include <avhrr_stdat.h>
-#include <nwp_stdat.h>
-#include <std_stdat.h>
-#include <mifield.h>
-#include <pps_cloudproducts_io.h>
-*/
-/*
-#include <safcm_stdat.h>
-#include <safssi_stdat.h>
-*/
 
 void readctval(char **infile, int *n, int *p, char **station, 
         int *start, int *end,
@@ -111,6 +102,6 @@ void readdlidev(char **infile, int *n, int *p, char **station,
         int *cm,
         double *ssi);
 
-#endif /* _COLDUMP_H */
+#endif /* _RCOLDUMP_H */
 
 #endif

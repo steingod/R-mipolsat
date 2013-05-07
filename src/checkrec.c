@@ -26,7 +26,7 @@
  * Øystein Godøy, METNO/FOU, 2013-04-12: Changed usage of header files.
  *
  * CVS_ID:
- * $Id: checkrec.c,v 1.4 2013-04-12 10:29:24 steingod Exp $
+ * $Id: checkrec.c,v 1.5 2013-05-07 08:37:11 steingod Exp $
  */
 
 #ifdef HAVE_LIBHDF5
@@ -44,8 +44,8 @@ int sm_debug=1;
 */
 
 void checkrec(char **infile, int *noobs, 
-	char **classname, char **station,
-	int *start, int *end) {
+        char **classname, char **station,
+        int *start, int *end) {
 
     char *where="checkrec";
     skeys scrit = {"cloud","NA",0,0};
@@ -55,11 +55,11 @@ void checkrec(char **infile, int *noobs,
     scrit.t_start = (time_t) *start;
     scrit.t_end = (time_t) *end;
     fmlogmsg(where,"Searching for class %s and time period %d - %d",
-    scrit.classname, (int) scrit.t_start, (int) scrit.t_end);
+            scrit.classname, (int) scrit.t_start, (int) scrit.t_end);
 
     *noobs=checknorec(*infile, &scrit);
     if (*noobs <= 0) {
-	fmlogmsg(where,"File trouble, or no data found (%d)...", *noobs);
+        fmlogmsg(where,"File trouble, or no data found (%d)...", *noobs);
     }
 
     return;
