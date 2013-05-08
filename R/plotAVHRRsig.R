@@ -1,5 +1,5 @@
 #
-# $Id: plotAVHRRsig.R,v 1.3 2013-05-08 11:03:29 steingod Exp $
+# $Id: plotAVHRRsig.R,v 1.4 2013-05-08 11:13:22 steingod Exp $
 #
 
 plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA",mylevels=20) {
@@ -53,8 +53,8 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
     if (feature=="a1/soz") {
         dataset$soz[dataset$soz>soztv]<-NA
         dataset$k1[is.na(dataset$soz)]<-NA
-        myxlim <- c(min(a1tics),max(a1tics))
-        myylim <- c(min(soztics),max(soztics))
+        myxlim <- c(min(soztics),max(soztics))
+        myylim <- c(min(a1tics),max(a1tics))
         if (suncor) {
             dataset$k1 <- dataset$k1/cos((dataset$soz)*pi/180.)
         }
@@ -70,8 +70,8 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
     } else if (feature=="a2/soz") {
         dataset$soz[dataset$soz>soztv]<-NA
         dataset$k2[is.na(dataset$soz)]<-NA
-        myxlim <- c(min(a2tics),max(a2tics))
-        myylim <- c(min(soztics),max(soztics))
+        myxlim <- c(min(soztics),max(soztics))
+        myylim <- c(min(a2tics),max(a2tics))
         if (suncor) {
             dataset$k2 <- dataset$k2/cos((dataset$soz)*pi/180.)
         }
@@ -105,8 +105,6 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
         dataset$k1[is.na(dataset$soz)]<-NA
         dataset$k2[is.na(dataset$soz)]<-NA
         tmp <- dataset$k2/dataset$k1
-        myxlim <- c(0,100)
-        myylim <- c(0,2)
         myxlim <- c(min(soztics),max(soztics))
         myylim <- c(min(a2da1tics),max(a2da1tics))
         myhist1 <- hist(tmp,breaks=a2da1groups,probability=T)
@@ -120,16 +118,11 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
         ytic <- a2da1tics
     } else if (feature=="a3da1/soz") {
         dataset$soz[dataset$soz>soztv]<-NA
-        #dataset$k3c[dataset$k3c==1]<-NA
-        #dataset$k1[is.na(dataset$k3c)]<-NA
-        #dataset$k1[is.na(dataset$soz)]<-NA
-        #dataset$k3[is.na(dataset$k3c)]<-NA
-        #dataset$k3[is.na(dataset$soz)]<-NA
         tmp <- dataset$k3a/dataset$k1
         myhist1 <- hist(tmp,breaks=a3da1groups,probability=T)
         myhist2 <- hist(dataset$soz,breaks=sozgroups,probability=T)
-        myxlim <- c(0,100)
-        myylim <- c(0,2)
+        myxlim <- c(min(soztics),max(soztics))
+        myylim <- c(min(a3da1tics),max(a3da1tics))
         mymatrix <- as.matrix(table(
                         cut(dataset$soz,sozgroups),
                         cut(tmp,a3da1groups)))
@@ -139,19 +132,11 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
         ytic <- a3da1tics
     } else if (feature=="a3da1/t4") {
         dataset$soz[dataset$soz>soztv]<-NA
-        #dataset$k3c[dataset$k3c==1]<-NA
-        #dataset$k1[is.na(dataset$k3c)]<-NA
-        #dataset$k1[is.na(dataset$soz)]<-NA
-        #dataset$k3[is.na(dataset$k3c)]<-NA
-        #dataset$k3[is.na(dataset$soz)]<-NA
-        #dataset$k4[is.na(dataset$k3c)]<-NA
-        #dataset$k4[is.na(dataset$k1)]<-NA
-        #dataset$k4[dataset$k4<250]<-NA
         tmp <- dataset$k3a/dataset$k1
         myhist1 <- hist(tmp,breaks=a3da1groups,probability=T)
         myhist2 <- hist(dataset$k4,breaks=t4groups,probability=T)
-        myxlim <- c(200,300)
-        myylim <- c(0,2)
+        myxlim <- c(min(t4tics),max(t4tics))
+        myylim <- c(min(a3da1tics),max(a3da1tics))
         mymatrix <- as.matrix(table(
                         cut(dataset$k4,t4groups),
                         cut(tmp,a3da1groups)))
