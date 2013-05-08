@@ -21,6 +21,7 @@
         \item SAFCM, NWCSAF PPS cloudtype products.
         \item SAFSSI, OSISAF shortwave estimates.
         \item SAFDLI, OSISAF longwave estimates.
+    }
 }
 
 \usage{
