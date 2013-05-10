@@ -40,7 +40,7 @@
 
     # To create a map projection use package proj4
     library(proj4)
-    tmp <- project(list(gshhsmapdata$lon-180,gshhsmapdata$lat),"+proj="merc")
+    tmp <- project(list(gshhsmapdata$lon-180,gshhsmapdata$lat),"+proj=merc")
     plot(tmp$x,tmp$y,type="l")
 }
 
