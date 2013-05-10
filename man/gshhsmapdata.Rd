@@ -20,6 +20,9 @@
     provided by the National Geophysical Data Center of NOAA Satellite and
     Information Service. The original dataset contains lakes, islands
     within lakes etc. This dataset contain only the coastlines.
+
+    The dataset has been implemented in R using the \link{getRgshhsMap}
+    function of \link{maptools}.
 }
 
 \usage{
@@ -29,6 +32,16 @@
 \format{
     A \link{data.frame} containing two elements, latitude (lat) and
     longitude (lon) in decimal degrees.
+}
+
+\examples{
+    # Plot the ordinary map directly.
+    plot(gshhsmapdata$lon,gshhsmapdata$lat,type="l")
+
+    # To create a map projection use package proj4
+    library(proj4)
+    tmp <- project(list(gshhsmapdata$lon-180,gshhsmapdata$lat),"+proj="merc")
+    plot(tmp$x,tmp$y,type="l")
 }
 
 \source{

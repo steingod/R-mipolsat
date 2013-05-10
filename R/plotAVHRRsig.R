@@ -1,5 +1,6 @@
 #
-# $Id: plotAVHRRsig.R,v 1.4 2013-05-08 11:13:22 steingod Exp $
+# $Id: plotAVHRRsig.R,v 1.5 2013-05-10 07:08:23 steingod Exp $
+# Husk å justere grensene for synlige kanaler!!! det er ikke samsvar nå...
 #
 
 plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA",mylevels=20) {

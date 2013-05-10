@@ -11,9 +11,9 @@
     from a visual observation is available, this is used as well.
 
     The objects currently stored in FMCOL files and their numbering is:
-    \enumerate {
-        \item AVHRR data, a square box of channel data (reflectances or
-        brightness temperature) and auxiliary information like observation
+    \enumerate{
+        \item AVHRR data, a square box of channel data reflectances or
+        brightness temperature and auxiliary information like observation
         geometry, time, number of pixels etc.
         \item NWP data, Numerical Weather Prdeiction data, usually from the
         operational model suite.

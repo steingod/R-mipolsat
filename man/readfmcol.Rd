@@ -14,7 +14,7 @@
     functions can be hidden or visible for ordinary usage.
 
     The objects currently supported and their numbering is:
-    \enumerate {
+    \enumerate{
         \item AVHRR data, a square box of channel data (reflectances or
         brightness temperature) and auxiliary information like observation
         geometry, time, number of pixels etc.
