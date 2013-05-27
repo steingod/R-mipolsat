@@ -1,5 +1,5 @@
 #
-# $Id: plotAVHRRsig.R,v 1.7 2013-05-27 13:28:25 steingod Exp $
+# $Id: plotAVHRRsig.R,v 1.8 2013-05-27 14:33:04 steingod Exp $
 # Husk å justere grensene for synlige kanaler!!! det er ikke samsvar nå...
 #
 
@@ -31,23 +31,15 @@ plotAVHRRsig <-
     sozgroups <- seq(min(dataset$soz)-2,max(dataset$soz)+2,2)
     soztics <- c(seq(1,90,2),95,150)
     soztics <- seq(min(dataset$soz),max(dataset$soz)+2,2)
-    #a1groups <- c(seq(0,100,2), 200)
     a1groups <- seq(min(dataset$k1-2),max(dataset$k1+2),2)
-    #a1tics <- c(seq(1,100,2),150)
     a1tics <- seq(min(dataset$k1),max(dataset$k1+2),2)
     a2groups <- a1groups
     a2tics <- a1tics
     a3groups <- a1groups
     a3tics <- a1tics
-    #a2da1groups <- c(0.,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,
-    #                 0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1.0,
-    #                 1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.6,1.7,
-    #                 1.8,1.9,2.0,2.5,3.0,4.0,5.0,6.0,10.0,15)
     a2da1groups <- seq(min(dataset$k2/dataset$k1)-0.05,
                        max(dataset$k2/dataset$k1)+0.05,
                        0.05)
-    #a2da1tics <- c(seq(0.025,1.5,0.05),
-    #               seq(1.55,2.0,0.1),2.25,2.75,seq(3.5,6.,1.),8,12.5)
     a2da1tics <- seq(min(dataset$k2/dataset$k1),
                        max(dataset$k2/dataset$k1)+0.05,
                        0.05)
