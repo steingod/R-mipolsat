@@ -1,57 +1,83 @@
 #
-# $Id: plotAVHRRsig.R,v 1.9 2013-05-27 14:33:27 steingod Exp $
+# $Id: plotAVHRRsig.R,v 1.10 2013-05-27 15:17:18 steingod Exp $
 #
 
-plotAVHRRsig <-
-    function(dataset,feature="a1/soz",suncor=FALSE,image=FALSE,soztv=90,sky="NA",mylevels=20) {
+plotAVHRRsig <- function(dataset,
+                         feature="a1/soz",
+                         suncor=FALSE,
+                         image=FALSE,
+                         soztv=90,
+                         sky="NA",
+                         ppsclass=0,
+                         mylevels=20) {
 
     if (missing(dataset)) {
         cat("Husk at objektnavn må oppgis...\n")
         return;
     }
 
-    if (sky == "oc") {
-        dataset$soz[dataset$N < 7]<-NA
-        dataset$k1[is.na(dataset$soz)]<-NA
-        dataset$k2[is.na(dataset$soz)]<-NA
-        dataset$k3[is.na(dataset$soz)]<-NA
-        dataset$k4[is.na(dataset$soz)]<-NA
-        dataset$k5[is.na(dataset$soz)]<-NA
-    } else if (sky == "cl") {
-        dataset$soz[dataset$N > 1]<-NA
-        dataset$k1[is.na(dataset$soz)]<-NA
-        dataset$k2[is.na(dataset$soz)]<-NA
-        dataset$k3[is.na(dataset$soz)]<-NA
-        dataset$k4[is.na(dataset$soz)]<-NA
-        dataset$k5[is.na(dataset$soz)]<-NA
+    # Check that this element can be used in filtering
+    if ("N" %in% names(dataset)) {
+        if (sky == "oc") {
+            dataset$soz[dataset$N < 7]<-NA
+            dataset$raz[dataset$N < 7]<-NA
+            dataset$saz[dataset$N < 7]<-NA
+            dataset$k1[is.na(dataset$soz)]<-NA
+            dataset$k2[is.na(dataset$soz)]<-NA
+            dataset$k3a[is.na(dataset$soz)]<-NA
+            dataset$k3b[is.na(dataset$soz)]<-NA
+            dataset$k4[is.na(dataset$soz)]<-NA
+            dataset$k5[is.na(dataset$soz)]<-NA
+        } else if (sky == "cl") {
+            dataset$soz[dataset$N > 1]<-NA
+            dataset$raz[dataset$N < 7]<-NA
+            dataset$saz[dataset$N < 7]<-NA
+            dataset$k1[is.na(dataset$soz)]<-NA
+            dataset$k2[is.na(dataset$soz)]<-NA
+            dataset$k3a[is.na(dataset$soz)]<-NA
+            dataset$k3b[is.na(dataset$soz)]<-NA
+            dataset$k4[is.na(dataset$soz)]<-NA
+            dataset$k5[is.na(dataset$soz)]<-NA
+        }
+    }
+    if ("cm" %in% names(dataset)) {
+        if (ppsclass > 0) {
+            dataset$soz[dataset$cm != ppsclass]<-NA
+            dataset$raz[dataset$cm != ppsclass]<-NA
+            dataset$saz[dataset$cm != ppsclass]<-NA
+            dataset$k1[is.na(dataset$soz)]<-NA
+            dataset$k2[is.na(dataset$soz)]<-NA
+            dataset$k3a[is.na(dataset$soz)]<-NA
+            dataset$k3b[is.na(dataset$soz)]<-NA
+            dataset$k4[is.na(dataset$soz)]<-NA
+            dataset$k5[is.na(dataset$soz)]<-NA
+        }
     }
 
-    sozgroups <- c(seq(0,90,2),100,200)
-    sozgroups <- seq(min(dataset$soz)-2,max(dataset$soz)+2,2)
-    soztics <- c(seq(1,90,2),95,150)
-    soztics <- seq(min(dataset$soz),max(dataset$soz)+2,2)
-    a1groups <- seq(min(dataset$k1-2),max(dataset$k1+2),2)
-    a1tics <- seq(min(dataset$k1),max(dataset$k1+2),2)
+    sozgroups <- seq(min(dataset$soz,na.rm=T)-2,max(dataset$soz,na.rm=T)+2,2)
+    soztics <- seq(min(dataset$soz,na.rm=T),max(dataset$soz,na.rm=T)+2,2)
+    a1groups <- seq(min(dataset$k1,na.rm=T)-2,max(dataset$k1,na.rm=T)+2,2)
+    a1tics <- seq(min(dataset$k1,na.rm=T),max(dataset$k1,na.rm=T)+2,2)
     a2groups <- a1groups
     a2tics <- a1tics
     a3groups <- a1groups
     a3tics <- a1tics
-    a2da1groups <- seq(min(dataset$k2/dataset$k1)-0.05,
-                       max(dataset$k2/dataset$k1)+0.05,
+    a2da1groups <- seq(min(dataset$k2/dataset$k1,na.rm=T)-0.05,
+                       max(dataset$k2/dataset$k1,na.rm=T)+0.05,
                        0.05)
-    a2da1tics <- seq(min(dataset$k2/dataset$k1),
-                       max(dataset$k2/dataset$k1)+0.05,
+    a2da1tics <- seq(min(dataset$k2/dataset$k1,na.rm=T),
+                       max(dataset$k2/dataset$k1,na.rm=T)+0.05,
                        0.05)
     a3da1groups <- a2da1groups
     a3da1tics <- a2da1tics
-    t4groups <- seq((min(dataset$k4)-2),(max(dataset$k4)+2),2)
-    t4tics <- seq(min(dataset$k4),max(dataset$k4)+2,2)
+    t4groups <- seq((min(dataset$k4,na.rm=T)-2),(max(dataset$k4,na.rm=T)+2),2)
+    t4tics <- seq(min(dataset$k4,na.rm=T),max(dataset$k4,na.rm=T)+2,2)
     tmp <- dataset$k4-dataset$k5
-    t4mt5groups <- seq(min(tmp)-0.2,max(tmp)+0.2,length.out=101)
-    t4mt5tics <- seq(min(tmp),max(tmp)+0.2,length.out=100)
+    t4mt5groups <- seq(min(tmp,na.rm=T)-0.2,max(tmp,na.rm=T)+0.2,length.out=101)
+    t4mt5tics <- seq(min(tmp,na.rm=T),max(tmp,na.rm=T)+0.2,length.out=100)
     tmp <- dataset$k3b-dataset$k4
-    t3mt4groups <- seq(min(tmp)-0.2,max(tmp)+0.2,length.out=101)
-    t3mt4tics <- seq(min(tmp),max(tmp)+0.2,length.out=100)
+    t3mt4groups <- seq(min(tmp,na.rm=T)-0.2,max(tmp,na.rm=T)+0.2,length.out=101)
+    t3mt4tics <- seq(min(tmp,na.rm=T),max(tmp,na.rm=T)+0.2,length.out=100)
 
     if (feature=="a1/soz") {
         dataset$soz[dataset$soz>soztv]<-NA
@@ -231,7 +257,8 @@ plotAVHRRsig <-
     plot(0,0, type="n",axes=F,ann=F)
     mytext <- paste("NOBS: ",sum(dataset$noobs),
                 "\nTime span: ",format(min(dataset$tid),"%d.%m.%Y")," - ",
-                format(max(dataset$tid),"%d.%m.%Y"),collapse="\n")
+                format(max(dataset$tid),"%d.%m.%Y"),
+                "\nPPS Class: ",ppsclass,collapse="\n")
     text(0,0,labels=mytext)
     title(paste(feature,"for",dataset$classname[1],sep=" "))
     par(def.par)
