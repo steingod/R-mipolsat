@@ -23,14 +23,14 @@
 # Øystein Godøy, METNO/FOU, 2013-04-11 
 #
 # CVS_ID:
-# $Id: read123.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
+# $Id: read123.R,v 1.4 2013-05-27 13:14:20 steingod Exp $
 #
 
 read123 <- function(filename,classname="cloud",station="NA",start="NA",end="NA") {
 
     if (missing(filename)) {
-	cat("Husk at filnavn må oppgis...\n")
-	return;
+        cat("Husk at filnavn må oppgis...\n")
+        return;
     }
 
     start <- as.POSIXct(strptime(start,format="%d%b%Y"))
@@ -42,14 +42,14 @@ read123 <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
 
     cat("Checking number of records in the file...\n")
     tmp <- .C("checkrec",
-	filename=as.character(filename),
-	noobs=as.integer(noobs),
-	classname=as.character(classname),
-	station=as.character(station),
-	start=as.integer(start),end=as.integer(end),package="mipolsat")
+              filename=as.character(filename),
+              noobs=as.integer(noobs),
+              classname=as.character(classname),
+              station=as.character(station),
+              start=as.integer(start),end=as.integer(end),package="mipolsat")
     cat(paste("Number of records found:",tmp$noobs,"\n"))
     if (tmp$noobs <= 0) {
-	return(cat("Bailing out...\n"))
+        return(cat("Bailing out...\n"))
     }
 
     nopix <- 13*13
@@ -69,23 +69,23 @@ read123 <- function(filename,classname="cloud",station="NA",start="NA",end="NA")
     saz <- real(length=size)
     raz <- real(length=size)
     cat("\nThe necessary vectors are allocated...\n")
-    
+
     cat("Reading data...\n")
     tmp <- .C("Rread123",
-	filename=as.character(filename),
-	noobs=as.integer(tmp$noobs),nopix=as.integer(nopix),
-	classname=as.character(classname),
-	station=as.character(station),
-	start=as.integer(start),end=as.integer(end),
-	stid=as.integer(stid),tid=as.integer(tid),
-	N=as.integer(N),
-	E=as.integer(E), sss=as.integer(sss),
-	k1=as.real(k1), k2=as.real(k2), k3a=as.real(k3a),
-	k3b=as.real(k3b),
-	k4=as.real(k4), k5=as.real(k5), 
-	soz=as.real(soz), saz=as.real(saz), raz=as.real(raz),
-	package="mipolsat"
-	)
+              filename=as.character(filename),
+              noobs=as.integer(tmp$noobs),nopix=as.integer(nopix),
+              classname=as.character(classname),
+              station=as.character(station),
+              start=as.integer(start),end=as.integer(end),
+              stid=as.integer(stid),tid=as.integer(tid),
+              N=as.integer(N),
+              E=as.integer(E), sss=as.integer(sss),
+              k1=as.real(k1), k2=as.real(k2), k3a=as.real(k3a),
+              k3b=as.real(k3b),
+              k4=as.real(k4), k5=as.real(k5), 
+              soz=as.real(soz), saz=as.real(saz), raz=as.real(raz),
+              package="mipolsat"
+              )
 
     tmp$tid <- ISOdate(1970,1,1)+tmp$tid 
     tmp$k1[tmp$k1 < -100] <- NA

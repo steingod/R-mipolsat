@@ -1,5 +1,5 @@
 #
-# $Id: plotAVHRRsig.R,v 1.5 2013-05-10 07:08:23 steingod Exp $
+# $Id: plotAVHRRsig.R,v 1.6 2013-05-27 13:14:20 steingod Exp $
 # Husk å justere grensene for synlige kanaler!!! det er ikke samsvar nå...
 #
 
@@ -27,9 +27,13 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
     }
 
     sozgroups <- c(seq(0,90,2),100,200)
+    sozgroups <- seq(min(dataset$soz)-2,max(dataset$soz)+2,2)
     soztics <- c(seq(1,90,2),95,150)
-    a1groups <- c(seq(0,100,2), 200)
-    a1tics <- c(seq(1,100,2),150)
+    soztics <- seq(min(dataset$soz),max(dataset$soz)+2,2)
+    #a1groups <- c(seq(0,100,2), 200)
+    a1groups <- seq(min(dataset$k1-2),max(dataset$k1+2),2)
+    #a1tics <- c(seq(1,100,2),150)
+    a1tics <- seq(min(dataset$k1),max(dataset$k1+2),2)
     a2groups <- a1groups
     a2tics <- a1tics
     a3groups <- a1groups
@@ -187,6 +191,19 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
         myxlab <- "T4"
         myylab <- "T3-T4"
         xtic <- t4tics
+        ytic <- t3mt4tics
+    } else if (feature=="t3mt4/soz") {
+        tmp <- dataset$k3b-dataset$k4
+        myxlim <- c(min(soztics),max(soztics))
+        myylim <- c(min(t3mt4tics),max(t3mt4tics))
+        myhist1 <- hist(tmp,breaks=t3mt4groups,probability=T)
+        myhist2 <- hist(dataset$soz,breaks=sozgroups,probability=T)
+        mymatrix <- as.matrix(table(
+                        cut(dataset$soz,sozgroups),
+                        cut(tmp,t3mt4groups)))
+        myxlab <- "soz"
+        myylab <- "T3-T4"
+        xtic <- soztics
         ytic <- t3mt4tics
     }
     

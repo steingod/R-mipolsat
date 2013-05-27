@@ -24,25 +24,38 @@
 # NA
 #
 # MODIFIED:
-# Ãystein GodÃ¸y, METNO/FOU, 2013-04-11 
+# Øystein Godøy, METNO/FOU, 2013-05-10 
 #
 # CVS_ID:
-# $Id: getclassnames.R,v 1.3 2013-04-11 20:29:04 steingod Exp $
+# $Id: getclassnames.R,v 1.4 2013-05-27 13:14:20 steingod Exp $
 #
 
 getclassnames <- function(filename) {
 
     if (! file.exists(filename)) {
-	return("Could not find requested file\n")
+        return("Could not find requested file\n")
     }
     noobs <- 0
     classes <- character(length=500)
 
+    cat("Checking number of records in the file...\n")
+    tmp <- .C("checkrec",
+              filename=as.character(filename),
+              noobs=as.integer(noobs),
+              classname=as.character(classname),
+              station=as.character(station),
+              start=as.integer(start),end=as.integer(end),
+              package="mipolsat")
+    cat(paste("Number of records found:",tmp$noobs,"\n"))
+    if (tmp$noobs <= 0) {
+        return(cat("Bailing out...\n"))
+    }
+
     tmp <- .C("classnames",
-	filename=as.character(filename),
-	noobs=as.integer(noobs),classes=as.character(classes),
-	package="mipolsat"
-	)
-    
+              filename=as.character(filename),
+              noobs=as.integer(noobs),classes=as.character(classes),
+              package="mipolsat"
+              )
+
     return(c(tmp$classes[1:tmp$noobs]))
 }
