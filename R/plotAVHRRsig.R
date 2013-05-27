@@ -1,6 +1,5 @@
 #
-# $Id: plotAVHRRsig.R,v 1.8 2013-05-27 14:33:04 steingod Exp $
-# Husk å justere grensene for synlige kanaler!!! det er ikke samsvar nå...
+# $Id: plotAVHRRsig.R,v 1.9 2013-05-27 14:33:27 steingod Exp $
 #
 
 plotAVHRRsig <-
