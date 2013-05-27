@@ -1,9 +1,10 @@
 #
-# $Id: plotAVHRRsig.R,v 1.6 2013-05-27 13:14:20 steingod Exp $
+# $Id: plotAVHRRsig.R,v 1.7 2013-05-27 13:28:25 steingod Exp $
 # Husk å justere grensene for synlige kanaler!!! det er ikke samsvar nå...
 #
 
-plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA",mylevels=20) {
+plotAVHRRsig <-
+    function(dataset,feature="a1/soz",suncor=FALSE,image=FALSE,soztv=90,sky="NA",mylevels=20) {
 
     if (missing(dataset)) {
         cat("Husk at objektnavn må oppgis...\n")
@@ -38,12 +39,18 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
     a2tics <- a1tics
     a3groups <- a1groups
     a3tics <- a1tics
-    a2da1groups <- c(0.,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,
-                     0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1.0,
-                     1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.6,1.7,
-                     1.8,1.9,2.0,2.5,3.0,4.0,5.0,6.0,10.0,15)
-    a2da1tics <- c(seq(0.025,1.5,0.05),
-                   seq(1.55,2.0,0.1),2.25,2.75,seq(3.5,6.,1.),8,12.5)
+    #a2da1groups <- c(0.,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,
+    #                 0.55,0.6,0.65,0.7,0.75,0.8,0.85,0.9,0.95,1.0,
+    #                 1.05,1.1,1.15,1.2,1.25,1.3,1.35,1.4,1.45,1.5,1.6,1.7,
+    #                 1.8,1.9,2.0,2.5,3.0,4.0,5.0,6.0,10.0,15)
+    a2da1groups <- seq(min(dataset$k2/dataset$k1)-0.05,
+                       max(dataset$k2/dataset$k1)+0.05,
+                       0.05)
+    #a2da1tics <- c(seq(0.025,1.5,0.05),
+    #               seq(1.55,2.0,0.1),2.25,2.75,seq(3.5,6.,1.),8,12.5)
+    a2da1tics <- seq(min(dataset$k2/dataset$k1),
+                       max(dataset$k2/dataset$k1)+0.05,
+                       0.05)
     a3da1groups <- a2da1groups
     a3da1tics <- a2da1tics
     t4groups <- seq((min(dataset$k4)-2),(max(dataset$k4)+2),2)
@@ -212,11 +219,21 @@ plotAVHRRsig <- function(dataset,feature="a1/soz",suncor=FALSE,soztv=90,sky="NA"
 
     layout(matrix(c(2,1,1,2,1,1,4,3,3),3,3,byrow=T))
     if (length(mylevels)>1) {
-        contour(xtic,ytic,mymatrix,levels=mylevels,
-                xlab=myxlab,ylab=myylab,xlim=myxlim,ylim=myylim)
+        if (image) {
+            image(xtic,ytic,mymatrix,levels=mylevels,
+                    xlab=myxlab,ylab=myylab,xlim=myxlim,ylim=myylim)
+        } else { 
+            contour(xtic,ytic,mymatrix,levels=mylevels,
+                    xlab=myxlab,ylab=myylab,xlim=myxlim,ylim=myylim)
+        }
     } else {
-        contour(xtic,ytic,mymatrix,nlevels=mylevels,
-                xlab=myxlab,ylab=myylab,xlim=myxlim,ylim=myylim)
+        if (image) {
+            image(xtic,ytic,mymatrix,nlevels=mylevels,
+                  xlab=myxlab,ylab=myylab,xlim=myxlim,ylim=myylim)
+        } else {
+            contour(xtic,ytic,mymatrix,nlevels=mylevels,
+                    xlab=myxlab,ylab=myylab,xlim=myxlim,ylim=myylim)
+        }
     }
     barplot(-(myhist1$intensities),horiz=TRUE)
     barplot(-(myhist2$intensities))
