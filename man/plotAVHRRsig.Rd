@@ -25,7 +25,8 @@
 }
 
 \usage{
-    plotAVHRRsig(dataset,feature="a1/soz", suncor=FALSE,soztv=90,sky="NA",mylevels=20)
+    plotAVHRRsig(dataset,feature="a1/soz", suncor=FALSE,ppsclass=0, 
+    soztv=90,sky="NA",mylevels=20)
 }
 
 \arguments{
@@ -37,6 +38,8 @@
     \item{suncor}{logical telling whether visible information should be
     cosinus corrected for solar elevation}
     \item{soztv}{threshold value to truncate visible channels at}
+    \item{ppsclass}{value to filter data by PPS Cloud Type Class number, 0
+    is no filtering}
     \item{sky}{string identifying whether cloud cover cinditions should be
     incurred from STDAT information and used to filter information.
     Possible values are "NA", "oc" and "cl" representing No filtering,
